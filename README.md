@@ -9,7 +9,6 @@ The tool generates a search link based on user input and filters the number of p
 * Used Libarys: os, sys, random, time, colorama, bs4, PIL, math 
 
 ## Setup
-pip install -r requirements.txt
 To install all requiered Libarys use following commands:
 * `pip install -r requirements.txt`
 
