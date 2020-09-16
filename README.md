@@ -2,7 +2,7 @@
 > This is a simple grabber written in Python which helps you to grab products from Willhaben.at
 
 ## General info
-The tool generates a search link based on user input and filters the number of possible products from the results page.Afterwards you enter a number of products to be grabbed and the tool creates a results folder and grabs the products. For each product the title, price, description, location and all images are downloaded. Additionally all images will be cropped.
+The tool generates a search link based on user input and filters the number of possible products from the results page.Afterwards you enter a number of products to be grabbed and the tool creates a results folder and grabs the products. For each product the title, price, description, location and all images are downloaded. Additionally all images will be cropped and all metadata will be deleted.
 
 ## Technologies
 * Used Python Version: Python 3.7
