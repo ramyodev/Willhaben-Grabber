@@ -85,7 +85,7 @@ class Willhaben():
         self.clear_console()
         self.logo()
         while True:
-            mp_first_under = input("Do you want to choose a subcategory? Y - Yes oder N - Nein\n").lower()
+            mp_first_under = input("Do you want to choose a subcategory? Y - Yes or N - No\n").lower()
 
             if mp_first_under == "y":
                 while True:
