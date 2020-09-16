@@ -1,0 +1,5 @@
+#Requirements BigBoss Willhaben Grabber
+colorama
+requests
+bs4
+pillow
