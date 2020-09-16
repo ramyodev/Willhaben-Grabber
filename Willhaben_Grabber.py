@@ -44,7 +44,7 @@ class Willhaben():
             if rt != "":
                 break
             else:
-                print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
         return rt
 
     def int_input(self, text):
@@ -53,7 +53,7 @@ class Willhaben():
                 rt = int(input(text))
                 break
             except:
-                print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
         return rt
 
     def str_in_dict(self, stringo, dicto):
@@ -62,7 +62,7 @@ class Willhaben():
             if stringo_input in dicto:
                 break
             else:
-                print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
         return stringo_input
 
     def int_in_dict(self, stringo, dicto):
@@ -73,9 +73,9 @@ class Willhaben():
                 if into_input in dicto:
                     break
                 else:
-                    print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                    print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
             except:
-                print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
         return into_input
 
     def clear_console(self):
@@ -85,12 +85,12 @@ class Willhaben():
         self.clear_console()
         self.logo()
         while True:
-            mp_first_under = input("Möchtest du eine Unterkategorie wählen? Y - Yes oder N - Nein\n").lower()
+            mp_first_under = input("Do you want to choose a subcategory? Y - Yes oder N - Nein\n").lower()
 
             if mp_first_under == "y":
                 while True:
-                    mp_user_choice_uc = self.int_input("Wähle eine Unterkategorie:\n"
-                                        "0. Zurück\n"
+                    mp_user_choice_uc = self.int_input("Choose a subcategory:\n"
+                                        "0. Back\n"
                                         "1. Antiquitäten / Kunst\n"
                                         "2. Kameras / TV / Multimedia\n"
                                         "3. Baby / Kind\n"
@@ -110,7 +110,7 @@ class Willhaben():
                                         "17. Games / Konsolen\n"
                                         "18. Wohnen / Haushalt / Gastronomie\n"
                                         "19. Haus / Garten / Werkstatt\n"
-                                        "20. Zu Verschenken\n")
+                                        "20. To give away Free\n")
 
                     if mp_user_choice_uc in range(21):
                         if mp_user_choice_uc == 0:
@@ -119,12 +119,12 @@ class Willhaben():
                             url = build_willhaben_url(self, mp_user_choice_uc)
                             self.zeit_start = time.time()
                             self.clear_console()
-                            print(Fore.GREEN + "Produkte werden gesucht..." + Fore.CYAN)
+                            print(Fore.GREEN + "Searching for products..." + Fore.CYAN)
 
                             get_willhaben_item(self, url)
                             self.marktplatz()
                     else:
-                        print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                        print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
 
             elif mp_first_under == "n":
                 url = build_willhaben_url(self, "")
@@ -133,6 +133,6 @@ class Willhaben():
                 get_willhaben_item(self, url)
                 break
             else:
-                print(Fore.RED + "--------------------\nUngültige Auswahl!\n--------------------" + Fore.CYAN)
+                print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
 
 obj = Willhaben()
