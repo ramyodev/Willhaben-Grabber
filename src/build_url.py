@@ -14,7 +14,7 @@ def build_willhaben_url(self, uk):
         else:
             break
 
-    types = {"p": "&ISPRIVATE=1", "d": "&ISPRIVATE=0", "b": ""}
+    types = {"d": "&ISPRIVATE=1", "h": "&ISPRIVATE=0", "b": ""}
     typ = self.str_in_dict("By whom should products be grabbed?\nD - Private dealers\nH - Business Dealers\nB - Both\n", types)
 
     to_filter = {"+": "%2B", " ": "+", "ö": "%F6", "ü": "%FC", "ä": "%E4", "Ö": "%D6", "Ü": "%DC", "Ä": "%C4", "×": "%D7",

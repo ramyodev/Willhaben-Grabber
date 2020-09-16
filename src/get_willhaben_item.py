@@ -149,7 +149,7 @@ def get_willhaben_item(self, url):
         print(f"Grabbing took {self.zeit_dauer} seconds.")
 
         while True:
-            again_grab = input("Do you want to grab more products? Y - Yes oder N - No\n").lower()
+            again_grab = input("Do you want to grab more products? Y - Yes or N - No\n").lower()
             if again_grab == "y":
                 self.clear_console()
                 self.marktplatz()
