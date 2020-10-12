@@ -20,5 +20,5 @@ Example of usage:
 I started the project out of boredom. If you have suggestions for improvement feel free to contact me!
 
 ## Contact
-Created by [@RamyDavin](https://github.com/RamyDavin)
+Created by [@Ramy-Zemo](https://github.com/ramy-zemo)
 Discord: Ramo#4907
