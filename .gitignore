@@ -2,3 +2,5 @@
 venv/
 *.xml
 *.iml
+src/playground.py
+src/__pycache__/
