@@ -3,10 +3,11 @@ import os
 import sys
 import random
 import time
+import re
+
 from bs4 import BeautifulSoup
 from PIL import Image
 from colorama import Fore
-from math import ceil
 
 
 def get_willhaben_item(self, url):
@@ -34,10 +35,10 @@ def get_willhaben_item(self, url):
     def get_item_list(self, url):
         search_page = requests.get(url)
         soup = BeautifulSoup(search_page.content, 'html.parser')
-        count = int(str(soup.find(id="search-count")).strip(
-            """<span class="search-count" id="search-count"> </span>""").replace(".", ""))
 
-        if count == 0:
+        count = int(''.join(list(filter(lambda char: char.isnumeric(), list(soup.find(id="result-list-title").decode_contents())))))
+
+        if not count:
             print(Fore.GREEN + "No products were found according to the specified criteria." + Fore.CYAN)
             return ""
         else:
@@ -83,54 +84,48 @@ def get_willhaben_item(self, url):
             self.links_with_product.remove(pdkte)
 
             name_adding = 0
-
             product_page = requests.get("https://www.willhaben.at" + pdkte)
-
             soup_pd = BeautifulSoup(product_page.content, 'html.parser')
 
             for heading in soup_pd.find_all("title"):
                 heading_item = heading.text.strip("- willhaben")
 
-            for code in soup_pd.find_all("span", {"id": "advert-info-whCode"}):
-                wh_code = code.text.replace(":", "")
+            wh_code = str()
+            for char in pdkte[::-1]:
+                if char.isnumeric():
+                    wh_code += char
+                elif char == "-":
+                    break
+            wh_code = wh_code[::-1]
 
-            for desc in soup_pd.find_all("div", {"class": "description"}):
-                description = desc.text.strip()
+            description = soup_pd.find(attrs={"data-testid": "ad-description-Beschreibung"}).text
 
             if not os.path.exists("Results/" + wh_code):
                 os.makedirs("Results/" + wh_code)
 
-            must_in_img = "https://cache.willhaben.at/mmo/"
+            image_regex = r'"referenceImageUrl":".+?(?=")"'
+            image_links = [image_link[21:-1] for image_link in re.findall(image_regex, soup_pd.decode())]
 
-            image_links = []
-
-            for img in soup_pd.find_all('img'):
-                if "https://secure.adnxs.com/" in img['src'] or "hoved.jpg" in img['src'] or ".svg" in img['src']:
-                    pass
-                elif ".jpg" in img['src'] and must_in_img in img['src']:
-                    image_links.append(img['src'])
-
-            for i in image_links:
-                response = requests.get(i)
-
-                imagename = f"Image{name_adding}" + ".jpg"
-
+            for image_link in image_links:
+                response = requests.get(image_link)
+                image_name = f"Image{name_adding}" + ".jpg"
                 name_adding += 1
+
                 try:
-                    with open(os.path.join(f'Results/' + f"{wh_code}", imagename), "wb") as file:
+                    with open(os.path.join(f'Results/' + f"{wh_code}", image_name), "wb") as file:
                         file.write(response.content)
                         file.close()
-                        image_to_change = Image.open(f'Results/' + f"{wh_code}/" + imagename)
+                        image_to_change = Image.open(f'Results/' + f"{wh_code}/" + image_name)
 
                         neue_länge = round(int(list(image_to_change.size)[0]) * 0.9)
                         neue_breite = round(int(list(image_to_change.size)[1]) * 0.9)
 
                         new_image = image_to_change.resize((neue_länge, neue_breite))
-                        new_image.save(f'Results/' + f"{wh_code}/" + imagename)
+                        new_image.save(f'Results/' + f"{wh_code}/" + image_name)
                 except:
-                    os.remove(f'Results/' + f"{wh_code}/{imagename}")
+                    os.remove(f'Results/' + f"{wh_code}/{image_name}")
 
-            infos = open("Results/" + wh_code + f"/Infos {wh_code.split()[1]}.txt", "w", encoding='utf-8',
+            infos = open("Results/" + wh_code + f"/Infos {wh_code}.txt", "w", encoding='utf-8',
                          errors='replace')
             infos.write("Titel, Price, ZIP and Place:\n")
             infos.write(heading_item)

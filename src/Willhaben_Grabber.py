@@ -113,7 +113,7 @@ class Willhaben():
                                         "20. To give away Free\n")
 
                     if mp_user_choice_uc in range(21):
-                        if mp_user_choice_uc == 0:
+                        if not mp_user_choice_uc:
                             break
                         else:
                             url = build_willhaben_url(self, mp_user_choice_uc)
@@ -135,4 +135,4 @@ class Willhaben():
             else:
                 print(Fore.RED + "--------------------\nInvalid selection!\n--------------------" + Fore.CYAN)
 
-obj = Willhaben()
+Willhaben()
