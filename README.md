@@ -1,5 +1,6 @@
-# Willhaben Grabber
 **[Warning] Currently Willhaben has changed their frontend so that only 5 products are rendered on the first request. For now, I'm bypassing this with Selenium. In the future we can think of something.**
+
+# Willhaben Grabber
 > This is a simple grabber written in Python which helps you to grab products from Willhaben.at
 
 ## General info
