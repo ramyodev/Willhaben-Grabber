@@ -41,8 +41,8 @@ def build_willhaben_url(self, uk):
         print(Fore.GREEN + "Please wait..." + Fore.CYAN)
 
         if uk != "":
-            url = self.url_base + self.menu["links"][str(uk)] + f"?PRICE_FROM={minimum_price}" + f"{types[typ]}" + f"&keyword={keyword}" + f"&PRICE_TO={maximum_price}" + f"&rows=100"
+            url = self.url_base + self.menu["links"][str(uk)] + f"?PRICE_FROM={minimum_price}" + f"{types[typ]}" + f"&keyword={keyword}" + f"&PRICE_TO={maximum_price}" + f"&rows=25"
         else:
-            url = self.url_base + f"?PRICE_FROM={minimum_price}" + f"{types[typ]}" + f"&keyword={keyword}" + f"&PRICE_TO={maximum_price}" + "&rows=100"
+            url = self.url_base + f"?PRICE_FROM={minimum_price}" + f"{types[typ]}" + f"&keyword={keyword}" + f"&PRICE_TO={maximum_price}" + "&rows=25"
 
     return url
