@@ -23,4 +23,4 @@ I started the project out of boredom. If you have suggestions for improvement fe
 
 ## Contact
 Created by [@Ramy-Zemo](https://github.com/ramy-zemo)
-Discord: Ramo#4907
+Discord: Ramo#1337
