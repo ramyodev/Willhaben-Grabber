@@ -1,4 +1,4 @@
-**[Warning] Currently Willhaben has changed their frontend so that only 5 products are rendered on the first request. For now, I'm bypassing this with Selenium in other Tools. In the future we can think of something. The tool still works so far, but only gets 5 products per page. This means that if you have a total of 100 products and want to get 100, you get a total of 25 of the 4 pages on which there are 25 products and 5 are displayed.**
+**[Warning] The tool is no longer fully functional due to new security measures implemented by Willhaben. With my API reader you can bypass this, but I currently don't have the time to implement it.**
 
 # Willhaben Grabber
 > This is a simple grabber written in Python which helps you to grab products from Willhaben.at
